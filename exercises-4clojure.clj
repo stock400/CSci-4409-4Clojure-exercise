@@ -105,7 +105,7 @@ filter odd?
 
 (fn revinter[s n] (for [i (range n)] (take-nth n (drop i s))))
 
-; The for loops goes through every number up to n. Then drop will drop the first i items in the 
+; The for loops goes through every number from 0 up to n. Then drop will drop the first i items in the 
 ; sequence s. Then take-nth will take every nth item from that sequence from drop.
 
 ;;; Problem #44: Rotate Sequence
