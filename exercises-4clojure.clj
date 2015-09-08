@@ -79,3 +79,53 @@ format "Hello, %s!"
 
 ; conj items into a list puts them at the beginning of the list and reduce does the conjoining one item at a time.
 ; So this causes all the items to be reversed in the list.
+
+;;; Problem #25: Find the odd numbers
+
+filter odd?
+
+; This just filters out every number that is odd out of a list.
+
+;;; Problem #37: Regular Expressions
+
+"ABC"
+
+; The regular expression searches for any capital letters and it finds "ABC".
+
+;;; Problem #40: Interpose a Seq
+
+(fn [separator s] (rest (mapcat #(list separator %) s)))
+
+; I made a function that takes a separator, separator, and a sequence, s. The mapcat will map
+; and concat to each item in the given sequence. The anonymous function inside the other function 
+; takes the separator and puts it before the items, one at a time. This leaves an extra separator in
+; the front, so we use rest to get rid of the extra one.
+
+;;; Problem #43: Reverse Interleave
+
+(fn revinter[s n] (for [i (range n)] (take-nth n (drop i s))))
+
+; The for loops goes through every number up to n. Then drop will drop the first i items in the 
+; sequence s. Then take-nth will take every nth item from that sequence from drop.
+
+;;; Problem #44: Rotate Sequence
+
+(fn rotate[n s](take (count s) (drop (mod n (count s)) (cycle s))))
+
+; cycle repeats the sequence an infinite amount of times. Then the drop mod portion will
+; get rid of the desired amount of items of the front to get the correct rotation.
+; And finally, take will readjust the sequence back to the correct size.
+
+;;; Problem #46: Flipping out
+
+(fn flip[f] (fn [& args] (apply f (reverse args))))
+
+; In this question, the arguments just in the wrong order. So using reverse to flip them around
+; makes all the tests pass. And apply, applies the function to the reversed arguments.
+
+;;; Problem #47: Contain Yourself
+
+4
+
+; For maps and sets, contains? looks to see if the value is in the sequence. For vectors, it will
+; check if the indice exists.
