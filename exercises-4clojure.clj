@@ -77,8 +77,8 @@ format "Hello, %s!"
 
 #(reduce conj () %)
 
-; conj items into a list puts them at the beginning of the list and reduce does the conjoining one item at a time.
-; So this causes all the items to be reversed in the list.
+; conj takes items from a list and puts them at the beginning of the first list and reduce does the conjoining one item 
+; at a time. So this causes all the items to be reversed in the list.
 
 ;;; Problem #25: Find the odd numbers
 
@@ -105,8 +105,9 @@ filter odd?
 
 (fn revinter[s n] (for [i (range n)] (take-nth n (drop i s))))
 
-; The for loops goes through every number from 0 up to n. Then drop will drop the first i items in the 
-; sequence s. Then take-nth will take every nth item from that sequence from drop.
+; The for loops goes from 0 up to n. Then drop will drop the first i items in the 
+; sequence s. Then take-nth will take every nth item from that sequence from drop, which
+; leads to the desired subsequences.
 
 ;;; Problem #44: Rotate Sequence
 
@@ -120,8 +121,8 @@ filter odd?
 
 (fn flip[f] (fn [& args] (apply f (reverse args))))
 
-; In this question, the arguments just in the wrong order. So using reverse to flip them around
-; makes all the tests pass. And apply, applies the function to the reversed arguments.
+; In this question, the arguments are just in the wrong order. So using reverse to flip them around
+; makes all the tests pass after applying the function, f, to the reversed arguments.
 
 ;;; Problem #47: Contain Yourself
 
